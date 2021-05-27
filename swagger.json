@@ -1,0 +1,182 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "This is a simple example NodeJS API project to Learn Swagger Documentation",
+    "version": "1.0.0",
+    "title": "Demo API",
+    "contact": {
+      "email": "Demo@gmail.com"
+    },
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "schemes": ["http"],
+  "host": "localhost:5000",
+  "basePath": "/",
+  "paths": {
+    "/login": {
+      "post": {
+        "summary": "Login user",
+        "description": "Login user",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Login object",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "$ref": "#/definitions/login"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "$ref": "#/definitions/loginSuccessResponse"
+            }
+          },
+          "400": {
+            "description": "Invalid status value",
+            "schema": {
+              "$ref": "#/definitions/invalidResponse"
+            }
+          }
+        }
+      }
+    },
+    "/register": {
+      "post": {
+        "summary": "Register user",
+        "description": "Register user",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Register object",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "$ref": "#/definitions/register"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "$ref": "#/definitions/loginSuccessResponse"
+            }
+          },
+          "400": {
+            "description": "Invalid status value",
+            "schema": {
+              "$ref": "#/definitions/invalidResponse"
+            }
+          }
+        }
+      }
+    },
+    "/user/list": {
+      "get": {
+        "summary": "Fetch user list",
+        "description": "Fetch user list",
+        "produces": ["application/json"],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "$ref": "#/definitions/fetchUserResponse"
+            }
+          },
+          "400": {
+            "description": "Invalid status value",
+            "schema": {
+              "$ref": "#/definitions/invalidResponse"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "login": {
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        }
+      }
+    },
+    "loginSuccessResponse": {
+      "type": "object",
+      "properties": {
+        "status": { "type": "boolean" },
+        "message": { "type": "string" },
+        "status_code": { "type": "integer" }
+      }
+    },
+    "invalidResponse": {
+      "type": "object",
+      "properties": {
+        "status": { "type": "boolean" },
+        "message": { "type": "string" },
+        "status_code": { "type": "integer" }
+      }
+    },
+    "register": {
+      "type": "object",
+      "properties": {
+        "firstName": {
+          "type": "string"
+        },
+        "lastName": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        },
+        "mobileNo": {
+          "type": "integer"
+        }
+      }
+    },
+    "fetchUserResponse": {
+      "type": "object",
+      "properties": {
+        "status": { "type": "boolean" },
+        "message": { "type": "string" },
+        "status_code": { "type": "integer" },
+        "data": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "_id": { "type": "string" },
+              "firstName": { "type": "string" },
+              "lastName": { "type": "string" },
+              "email": { "type": "string" },
+              "password": { "type": "string" },
+              "mobileNo": { "type": "integer" }
+            }
+          }
+        }
+      }
+    }
+  }
+}
