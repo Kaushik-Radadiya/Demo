@@ -33,7 +33,10 @@ const login = async (req, res) => {
     const data = await RegisterModel.findOne({ email: req.body.email });
 
     if (data && data.password === req.body.password) {
-      res.json(responseGenerate(false, messages.LOGIN_SUCCESS));
+      
+      const token = await data.generateAuthToken()
+      const user = await RegisterModel.findOne({ email: req.body.email }, {password:0,tokens:0});
+      res.json(responseGenerate(false, messages.LOGIN_SUCCESS , 200 , {user , token}));
     } else {
       res.json(responseGenerate(true, messages.LOGIN_FAIL));
     }
