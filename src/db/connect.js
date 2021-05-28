@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 mongoose.connect(
-  "mongodb+srv://kaushik:kaushik@test.wtnqg.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
+  process.env.DB_CONNECTION,
   { useUnifiedTopology: true, useNewUrlParser: true },
   (err) => {
     if (!err) {
