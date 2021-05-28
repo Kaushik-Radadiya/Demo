@@ -1,8 +1,8 @@
+const config = require("./config");
 require("./src/db/connect");
 const express = require("express");
 const swaggerUi = require("swagger-ui-express");
 const fs = require("fs");
-const config = require("./config");
 const peoples = require("./src/routers/peoples");
 const register = require("./src/routers/register");
 const swaggerDocument = require("./swagger.json");

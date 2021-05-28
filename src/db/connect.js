@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 mongoose.connect(
-  "mongodb://localhost:27017/Demo",
+  process.env.DB_CONNECTION,
   { useUnifiedTopology: true, useNewUrlParser: true },
   (err) => {
     if (!err) {
@@ -9,5 +9,5 @@ mongoose.connect(
     } else {
       console.log("Error", err);
     }
-  },
+  }
 );
